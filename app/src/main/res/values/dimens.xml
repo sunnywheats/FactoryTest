@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="menu_text_size">36dp</dimen>
+    <dimen name="menu_paddingTop">24dp</dimen>
+    <dimen name="menu_paddingBottom">24dp</dimen>
+    <dimen name="test_text_size">28dp</dimen>
+    <dimen name="test_paddingTop">18dp</dimen>
+    <dimen name="test_paddingBottom">18dp</dimen>
+</resources>
