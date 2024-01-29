@@ -3,6 +3,7 @@ package com.hxy.factorytest.data
 import android.content.Context
 import com.hxy.factorytest.R
 import com.hxy.factorytest.data.model.TestItem
+import com.hxy.factorytest.util.Const
 import com.hxy.factorytest.util.FeatureConfig
 
 class LocalDataSource(private val context: Context){
@@ -30,27 +31,27 @@ class LocalDataSource(private val context: Context){
         itemResult =
             TestItem(
                 context.getString(R.string.menu_item_result),
-                ".ui.TestItemActivity",
+                ".ui.TestResultActivity",
                 FeatureConfig.IS_SUPPORT_ITEM_RESULT
             )
         fullTest =
             TestItem(
                 context.getString(R.string.menu_full_test),
-                ".ui.TestItemActivity",
+                ".ui.TestFullActivity",
                 FeatureConfig.IS_SUPPORT_FULL_TEST
             )
         agingTest =
             TestItem(
                 context.getString(R.string.menu_aging_test),
-                ".ui.TestItemActivity",
+                ".ui.TestAgingActivity",
                 FeatureConfig.IS_SUPPORT_AGING_TEST
             )
         versionTest =
             TestItem(
                 context.getString(R.string.test_version),
-                ".TestItemActivity",
+                ".item.version.TestVersionActivity",
                 FeatureConfig.IS_SUPPORT_VERSION,
-                TestSpf(context).getState("test_version"),
+                TestSpf(context).getState(Const.KEY_VERSION),
                 FeatureConfig.ORDER_VERSION,
                 "test_version"
             )

@@ -27,13 +27,16 @@ class TestItemActivity : AppCompatActivity() {
         //init view
         initView()
         setContentView(mRecyclerView)
+    }
+
+    override fun onResume() {
+        super.onResume()
         //init menu
         val tests = TestRepository(LocalDataSource(this)).getAllTest()
         //adapter
         val menuAdapter = TestItemAdapter(tests) { test -> adapterOnClick(test) }
         mRecyclerView.adapter = menuAdapter
     }
-
     private fun initView() {
         val params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         mRecyclerView = RecyclerView(this)
