@@ -26,31 +26,31 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.menu_item_test),
                 ".ui.TestItemActivity",
-                FeatureConfig.IS_SUPPORT_ITEM_TEST
+                FeatureConfig.SUPPORT_ITEM_TEST
             )
         itemResult =
             TestItem(
                 context.getString(R.string.menu_item_result),
                 ".ui.TestResultActivity",
-                FeatureConfig.IS_SUPPORT_ITEM_RESULT
+                FeatureConfig.SUPPORT_ITEM_RESULT
             )
         fullTest =
             TestItem(
                 context.getString(R.string.menu_full_test),
                 ".ui.TestFullActivity",
-                FeatureConfig.IS_SUPPORT_FULL_TEST
+                FeatureConfig.SUPPORT_FULL_TEST
             )
         agingTest =
             TestItem(
                 context.getString(R.string.menu_aging_test),
                 ".ui.TestAgingActivity",
-                FeatureConfig.IS_SUPPORT_AGING_TEST
+                FeatureConfig.SUPPORT_AGING_TEST
             )
         versionTest =
             TestItem(
                 context.getString(R.string.test_version),
                 ".item.version.TestVersionActivity",
-                FeatureConfig.IS_SUPPORT_VERSION,
+                FeatureConfig.SUPPORT_VERSION,
                 TestSpf(context).getState(Const.KEY_VERSION),
                 FeatureConfig.ORDER_VERSION,
                 "test_version"
@@ -59,7 +59,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_rf_call),
                 ".ItemResultActivity",
-                FeatureConfig.IS_SUPPORT_RF_CALL,
+                FeatureConfig.SUPPORT_RF_CALL,
                 TestSpf(context).getState("test_rf_call"),
                 FeatureConfig.ORDER_RF_CALL,
                 "test_rf_call"
@@ -68,7 +68,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_rtc),
                 ".FullTestActivity",
-                FeatureConfig.IS_SUPPORT_RTC,
+                FeatureConfig.SUPPORT_RTC,
                 TestSpf(context).getState("test_rtc"),
                 FeatureConfig.ORDER_RTC,
                 "test_rtc"
@@ -77,7 +77,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_memory),
                 ".AgingTestActivity",
-                FeatureConfig.IS_SUPPORT_MEMORY,
+                FeatureConfig.SUPPORT_MEMORY,
                 TestSpf(context).getState("test_memory"),
                 FeatureConfig.ORDER_MEMORY,
                 "test_memory"
@@ -86,7 +86,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_googlekey),
                 ".AgingTestActivity",
-                FeatureConfig.IS_SUPPORT_GOOGLEKEY,
+                FeatureConfig.SUPPORT_GOOGLEKEY,
                 TestSpf(context).getState("test_googlekey"),
                 FeatureConfig.ORDER_GOOGLEKEY,
                 "test_googlekey"
@@ -95,7 +95,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_lcd),
                 ".AgingTestActivity",
-                FeatureConfig.IS_SUPPORT_LCD,
+                FeatureConfig.SUPPORT_LCD,
                 TestSpf(context).getState("test_lcd"),
                 FeatureConfig.ORDER_LCD,
                 "test_lcd"
@@ -104,7 +104,7 @@ class LocalDataSource(private val context: Context){
             TestItem(
                 context.getString(R.string.test_backlight),
                 ".AgingTestActivity",
-                FeatureConfig.IS_SUPPORT_BACKLIGHT,
+                FeatureConfig.SUPPORT_BACKLIGHT,
                 TestSpf(context).getState("test_backlight"),
                 FeatureConfig.ORDER_BACKLIGHT,
                 "test_backlight"

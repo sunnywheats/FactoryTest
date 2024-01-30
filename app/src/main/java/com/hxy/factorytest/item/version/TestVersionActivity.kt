@@ -1,6 +1,5 @@
 package com.hxy.factorytest.item.version
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,29 +24,9 @@ import com.hxy.factorytest.item.ui.theme.FactoryTestTheme
 import com.hxy.factorytest.util.Const
 
 class TestVersionActivity : ComponentActivity() {
-    private lateinit var values: Map<String, String>
-    private var passVisible = true
-
-    fun initVersionInfo() {
-        val android = Build.VERSION.RELEASE
-        val prop = "prop_version"
-        val build = "display_version"
-        val imei1 = VersionInfo().getIMEI(this,1).toString()
-        val imei2 = VersionInfo().getIMEI(this,2).toString()
-        val sn1 = VersionInfo().getSN(1).toString()
-        val sn2 = VersionInfo().getSN(2).toString()
-        values = mapOf(
-            "android" to android, "prop" to prop, "build" to build,
-            "imei1" to imei1, "imei2" to imei2, "sn1" to sn1, "sn2" to sn2
-        )
-        if (values.any { it == null }) {
-            passVisible = false
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initVersionInfo();
         setContent {
             FactoryTestTheme {
                 // A surface container using the 'background' color from the theme
@@ -56,9 +35,10 @@ class TestVersionActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val versionInfo = VersionInfo()
                     VersionScreen(
-                        values,
-                        passVisible,
+                        versionInfo.getVersionInfo(),
+                        versionInfo.passVisible,
                         passClick = { Pass(this, Const.KEY_VERSION) },
                         failClick = { Fail(this, Const.KEY_VERSION) }
                     )
@@ -70,18 +50,18 @@ class TestVersionActivity : ComponentActivity() {
 
 @Composable
 fun VersionScreen(
-    values: Map<String, String>,
+    results: Map<String, String>,
     passVisible: Boolean,
     passClick: () -> Unit,
     failClick: () -> Unit
 ) {
-    val android = values["android"] ?: "11"
-    val prop = values["prop"] ?: ""
-    val build = values["build"] ?: ""
-    val imei1 = values["imei1"] ?: "000000000000000"
-    val imei2 = values["imei2"] ?: "000000000000000"
-    val sn1 = values["sn1"] ?: "123456789"
-    val sn2 = values["sn2"] ?: "123456789"
+    val android = results["android"] ?: "11"
+    val prop = results["prop"] ?: ""
+    val build = results["build"] ?: ""
+    val imei1 = results["imei1"] ?: "000000000000000"
+    val imei2 = results["imei2"] ?: "000000000000000"
+    val sn1 = results["sn1"] ?: "123456789"
+    val sn2 = results["sn2"] ?: "123456789"
     Column(
         modifier = Modifier.fillMaxSize()
     ) {

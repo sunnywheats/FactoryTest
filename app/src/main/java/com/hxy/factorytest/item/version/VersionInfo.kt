@@ -1,34 +1,36 @@
 package com.hxy.factorytest.item.version
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
-import android.telephony.TelephonyManager
-
+import com.hxy.factorytest.util.SystemProperties
 
 class VersionInfo {
-
-    fun getIMEI(context: Context, index: Int): String? {
-        // check if has the permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                return "";
-            }
-        }
-        return "000";
-        /*val telephonyManager =
-            context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        return telephonyManager?.getImei(index) ?: ""*/
+    var passVisible = true
+    fun getVersionInfo(): Map<String, String> {
+        var infos: Map<String, String>
+        val android = Build.VERSION.RELEASE
+        val prop = ""
+        val build = ""
+        val imei1 = getIMEI(1).toString()
+        val imei2 = getIMEI(2).toString()
+        val sn1 = getSN(1).toString()
+        val sn2 = getSN(2).toString()
+        infos = mapOf(
+            "android" to android, "prop" to prop, "build" to build,
+            "imei1" to imei1, "imei2" to imei2, "sn1" to sn1, "sn2" to sn2
+        )
+        passVisible = !infos.values.any { it.isEmpty() || it.equals("0") }
+        return infos
     }
 
-    /*fun getMEID(context: Context, index: Int): String? {
-        val manager = context
-            .getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
-        return manager.getMeid(index)
-    }*/
+    fun getIMEI(index: Int): Int {
+        return SystemProperties().getInt("persist.sys.hxyimei"+index,0)
+    }
 
-    fun getSN(index: Int): String? {
-        return "sn"
+    fun getMEID(index: Int): Int {
+        return SystemProperties().getInt("persist.sys.hxymeid"+index,0)
+    }
+
+    fun getSN(index: Int): Int {
+        return SystemProperties().getInt("persist.sys.hxysn"+index,0)
     }
 }

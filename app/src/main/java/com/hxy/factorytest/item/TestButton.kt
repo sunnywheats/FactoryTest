@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hxy.factorytest.R
 import com.hxy.factorytest.data.TestSpf
+import com.hxy.factorytest.util.Const
 
 @Composable
 fun TestButton(passVisible: Boolean,passClick: () -> Unit,failClick: () -> Unit) {
@@ -49,10 +50,10 @@ fun TestButton(passVisible: Boolean,passClick: () -> Unit,failClick: () -> Unit)
 }
 
 fun Pass(activity: Activity,key:String){
-    TestSpf(activity.baseContext).setState(key,1)
+    TestSpf(activity.baseContext).setState(key,Const.PASS)
     activity?.finish()
 }
 fun Fail(activity: Activity,key:String){
-    TestSpf(activity.baseContext).setState(key,-1)
+    TestSpf(activity.baseContext).setState(key,Const.FAIL)
     activity?.finish()
 }

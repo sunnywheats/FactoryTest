@@ -4,18 +4,18 @@ class FeatureConfig {
     companion object {
         //SUPPORT
         //main
-        val IS_SUPPORT_ITEM_TEST = true;
-        val IS_SUPPORT_ITEM_RESULT = true;
-        val IS_SUPPORT_FULL_TEST = true;
-        val IS_SUPPORT_AGING_TEST = true;
+        val SUPPORT_ITEM_TEST = true;
+        val SUPPORT_ITEM_RESULT = true;
+        val SUPPORT_FULL_TEST = true;
+        val SUPPORT_AGING_TEST = true;
         //factory test
-        val IS_SUPPORT_VERSION = true;
-        val IS_SUPPORT_RF_CALL = true;
-        val IS_SUPPORT_RTC = true;
-        val IS_SUPPORT_MEMORY = true;
-        val IS_SUPPORT_GOOGLEKEY = true;
-        val IS_SUPPORT_LCD = true;
-        val IS_SUPPORT_BACKLIGHT = true;
+        val SUPPORT_VERSION = true;
+        val SUPPORT_RF_CALL = true;
+        val SUPPORT_RTC = true;
+        val SUPPORT_MEMORY = true;
+        val SUPPORT_GOOGLEKEY = true;
+        val SUPPORT_LCD = true;
+        val SUPPORT_BACKLIGHT = true;
         //ORDER
         val ORDER_VERSION = 0;
         val ORDER_RF_CALL = 1;

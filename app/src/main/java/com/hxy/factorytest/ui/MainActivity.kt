@@ -27,9 +27,34 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
         private const val PERMISSIONS_REQUEST_CODE = 1
         private val PERMISSIONS_REQUEST = arrayOf(
+            //Manifest.permission.CAMERA,
             Manifest.permission.READ_PHONE_STATE,
-            //Manifest.permission.READ_EXTERNAL_STORAGE,
-            //Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.RECEIVE_BOOT_COMPLETED,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.ACCESS_WIFI_STATE,
+            Manifest.permission.CHANGE_WIFI_STATE,
+            Manifest.permission.DISABLE_KEYGUARD,
+            Manifest.permission.VIBRATE,
+            //Manifest.permission.BLUETOOTH_ADVERTISE,
+            //Manifest.permission.BLUETOOTH_PRIVILEGED,
+            //Manifest.permission.CALL_PRIVILEGED,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.WAKE_LOCK,
+            //Manifest.permission.SYSTEM_ALERT_WINDOW,
+            Manifest.permission.MODIFY_AUDIO_SETTINGS,
+            //Manifest.permission.WRITE_SECURE_SETTINGS,
+            //Manifest.permission.WRITE_SETTINGS,
+            //Manifest.permission.DELETE_PACKAGES,
+            //Manifest.permission.REBOOT,
+            //Manifest.permission.BLUETOOTH_CONNECT,
+            //Manifest.permission.BLUETOOTH_SCAN,
+            //Manifest.permission.CONFIGURE_WIFI_DISPLAY,
+            //Manifest.permission.OVERRIDE_WIFI_CONFIG,
+            //Manifest.permission.MANAGE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.USE_BIOMETRIC,
+            //Manifest.permission.MASTER_CLEAR
         )
     }
 
@@ -40,11 +65,7 @@ class MainActivity : AppCompatActivity() {
         //init view
         initView()
         setContentView(mMenuRecyclerView)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
+        initMenu()
         checkPermission()
     }
 
@@ -79,10 +100,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkPermission() {
         if (hasPermission()) {
-            initMenu()
+            //initMenu()
         } else if (shouldShowRequest()) {
             val text =
-                "The permission is denied, the application cannot be used normally, it will exit soon"
+                "The permission is denied, the application cannot be used normally, please set permissions!"
             Toast.makeText(this,text,Toast.LENGTH_LONG).show()
         } else {
             // You can directly ask for the permission.
@@ -109,6 +130,7 @@ class MainActivity : AppCompatActivity() {
                     permission
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
+                Log.d(TAG, "permission = " + permission);
                 return false
             }
         }
@@ -129,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             Log.d(TAG, "granted = " + granted);
-            if (granted) initMenu()
+            //if (granted) initMenu()
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
